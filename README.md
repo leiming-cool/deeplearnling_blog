@@ -63,3 +63,22 @@
    - 5） 常规数据集，常用计算的算子
    - 6） 还提供了学习和研究用的算力支持
 
+## 代码示例
+>>> 
+```
+# 该模型运行在单个CPU上
+use_cuda = False # 如想使用GPU，请设置为 True
+place = fluid.CUDAPlace(0) if use_cuda else fluid.CPUPlace()
+
+# 调用train_program 获取预测值，损失值，
+prediction, [avg_loss, acc] = train_program()
+
+# 输入的原始图像数据，名称为img，大小为28*28*1
+# 标签层，名称为label,对应输入图片的类别标签
+# 告知网络传入的数据分为两部分，第一部分是img值，第二部分是label值
+feeder = fluid.DataFeeder(feed_list=['img', 'label'], place=place)
+
+# 选择Adam优化器
+optimizer = optimizer_program()
+optimizer.minimize(avg_loss)
+```
