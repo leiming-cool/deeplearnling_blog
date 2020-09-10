@@ -1,3 +1,4 @@
+[TOC] [toc]
 # 飞浆（paddlepaddle) 学习笔记
 
 1 参加飞浆课程： https://aistudio.baidu.com/aistudio/education/group/info/1297
